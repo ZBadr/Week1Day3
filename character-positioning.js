@@ -1,17 +1,19 @@
 function countLetters(word) {
+  var noSpaces = word.join("").toLowerCase();
   var object = {};
   // var indicies = [];
   // split the word into an array of characters
   //var word_split = word.split("");
-  for (var i = 0; i < word.length; i++) {
-    if (!object[word[i]]) {
-      object[word[i]] = {count: 1, indices: [i]};
+  for (var i = 0; i < noSpaces.length; i++) {
+    if (!object[noSpaces[i]]) {
+      object[noSpaces[i]] = {count: 1, indices: [i]};
     } else {
-      object[word[i]].count++;
-      object[word[i]].indices.push(i);
+      object[noSpaces[i]].count++;
+      object[noSpaces[i]].indices.push(i);
     }
+    //console.log(object);
   }
-  delete object[" "];
+  //delete object[" "];
 return object;
 
 
@@ -19,6 +21,6 @@ return object;
     // increment if familiar or set to 1 if new
 }
 
-  var result = countLetters(process.argv[2]);
+  var result = countLetters(process.argv.slice(2));
   console.log(result);
 
